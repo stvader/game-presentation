@@ -19,13 +19,12 @@
 		<div class="reveal">
 			<div class="slides">
 				<section>
-					<h2>Viking's Invasion</h2>
+					<h2 class="game-name">Viking's Invasion</h2>
 					<p>by</p>
 					<p><a href="https://github.com/stvader">Vadim Stalmashonak</a></p>
 				</section>
 				<section>
-					<iframe src="https://www.youtube.com/watch?v=W8WBLG-7WH8">
-					</iframe>
+					<iframe width="560" height="315" src="https://www.youtube.com/embed/XMN5SCQ6Feg" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>					
 					<br>
 					<a href="https://stvader.github.io/viking-invasion-game/index.html">Game</a>
 				</section>
@@ -39,7 +38,153 @@
 						<li>Babel</li>
 					</ul>
 				</section>
+				<section>
+					<h4>Barier Collisions</h4>
+					<img src="img/barier-collision.jpg" alt="barier collision">
+				</section>
+				<section>
+					<h4>Barier Collision Code</h4>
+					<pre>
+						<code class="javascript">
+this.addLengthBariers = 10;
 
+canMove(dir) {
+        let result = true;
+
+        const player = this.player.getBorders(); 
+
+        switch(dir) {
+            case 'down':                
+
+                this.mapObject.bariersColl.forEach((barier) => {
+                    
+                    if(player.bottom > barier.top &&
+                        player.left < barier.right - this.addLengthBariers &&
+                        player.right > barier.left  + this.addLengthBariers &&
+                        player.bottom < barier.bottom) {
+
+                        result = false;
+                    } 
+                });
+                break;
+
+            case 'up':                
+
+                this.mapObject.bariersColl.forEach((barier) => {
+                    
+                     if(player.top < barier.bottom &&
+                        player.left < barier.right - this.addLengthBariers &&
+                        player.right > barier.left  + this.addLengthBariers &&
+                        player.top > barier.top) {
+
+                        result = false;
+                    } 
+                });
+                break;
+
+            case 'left':                
+
+                this.mapObject.bariersColl.forEach((barier) => {
+                    
+                     if (player.left < barier.right &&
+                        player.top < barier.bottom - this.addLengthBariers &&
+                        player.bottom > barier.top + this.addLengthBariers &&
+                        player.left > barier.left) {
+
+                        result = false;
+                    } 
+                });
+                break;
+
+            case 'right':                
+
+                this.mapObject.bariersColl.forEach((barier) => {
+                    
+                     if (player.right > barier.left &&
+                        player.top < barier.bottom - this.addLengthBariers &&
+                        player.bottom > barier.top + this.addLengthBariers &&
+                        player.right < barier.right) {
+
+                        result = false;
+                    } 
+                });
+                break;
+        }
+
+        return result;
+    }
+
+canMove(dir) {
+    let result = true;
+
+    const player = this.player.getBorders(); 
+
+    switch(dir) {
+        case 'down':
+            
+            this.mapObject.bariersColl.forEach((barier) => {
+                
+                if(player.bottom > barier.top &&
+                    player.left < barier.right - this.addLengthBariers &&
+                    player.right > barier.left  + this.addLengthBariers &&
+                    player.bottom < barier.bottom) {
+
+                    result = false;
+                } 
+            });
+            break;
+
+        case 'up':            
+
+            this.mapObject.bariersColl.forEach((barier) => {
+                
+                 if(player.top < barier.bottom &&
+                    player.left < barier.right - this.addLengthBariers &&
+                    player.right > barier.left  + this.addLengthBariers &&
+                    player.top > barier.top) {
+
+                    result = false;
+                } 
+            });
+            break;
+
+        case 'left':            
+
+            this.mapObject.bariersColl.forEach((barier) => {
+                
+                 if (player.left < barier.right &&
+                    player.top < barier.bottom - this.addLengthBariers &&
+                    player.bottom > barier.top + this.addLengthBariers &&
+                    player.left > barier.left) {
+
+                    result = false;
+                } 
+            });
+            break;
+
+        case 'right':            
+
+            this.mapObject.bariersColl.forEach((barier) => {
+                
+                 if (player.right > barier.left &&
+                    player.top < barier.bottom - this.addLengthBariers &&
+                    player.bottom > barier.top + this.addLengthBariers &&
+                    player.right < barier.right) {
+
+                    result = false;
+                } 
+            });
+            break;
+    }
+
+    return result;
+}
+					    </code>
+				    </pre>
+				</section>
+				<section>
+					<h5>Go to fight with vikings!</h5>
+				</section>
 
 
 				

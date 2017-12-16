@@ -1,10 +1,10 @@
-.reveal section .logo {
-	background: inherit;
-	border: transparent;
-	box-shadow: none;
+@font-face {
+font-family: "Exocet";
+	src: url("fonts/exocet-heavy.ttf");	
+	font-weight: normal;
+	font-style: normal;
 }
 
-.sevice-block {
-	display: inline-block;
-	width: 49%;
+.game-name {
+	font-family: "Exocet" !important;
 }
